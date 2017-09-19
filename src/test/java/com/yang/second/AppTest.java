@@ -1,5 +1,6 @@
 package com.yang.second;
 
+import com.yang.util.Util;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -33,6 +34,6 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
+        Util.writeFile("hello");
     }
 }
