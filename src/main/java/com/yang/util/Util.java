@@ -1,77 +1,45 @@
 package com.yang.util;
 
+import net.sf.json.*;
+import netscape.javascript.JSObject;
+
+import javax.xml.soap.SOAPElementFactory;
 import java.io.*;
 import java.util.List;
 
-/**
- * Created by Administrator on 2017/9/19.
- */
 public class Util {
-    /**
-     * 以字符为单位读取文件，常用于读文本，数字等类型的文件
-     */
-    public static void readFileByChars(String fileName) {
-        File file = new File(fileName);
-        Reader reader = null;
-        try {
-            System.out.println("以字符为单位读取文件内容，一次读一个字节：");
-            // 一次读一个字符
-            reader = new InputStreamReader(new FileInputStream(file));
-            int tempchar;
-            while ((tempchar = reader.read()) != -1) {
-                // 对于windows下，\r\n这两个字符在一起时，表示一个换行。
-                // 但如果这两个字符分开显示时，会换两次行。
-                // 因此，屏蔽掉\r，或者屏蔽\n。否则，将会多出很多空行。
-                if (((char) tempchar) != '\r') {
-                    System.out.print((char) tempchar);
-                }
-            }
-            reader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            System.out.println("以字符为单位读取文件内容，一次读多个字节：");
-            // 一次读多个字符
-            char[] tempchars = new char[30];
-            int charread = 0;
-            reader = new InputStreamReader(new FileInputStream(fileName));
-            // 读入多个字符到字符数组中，charread为一次读取字符数
-            while ((charread = reader.read(tempchars)) != -1) {
-                // 同样屏蔽掉\r不显示
-                if ((charread == tempchars.length)
-                        && (tempchars[tempchars.length - 1] != '\r')) {
-                    System.out.print(tempchars);
-                } else {
-                    for (int i = 0; i < charread; i++) {
-                        if (tempchars[i] == '\r') {
-                            continue;
-                        } else {
-                            System.out.print(tempchars[i]);
-                        }
-                    }
-                }
-            }
 
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e1) {
-                }
-            }
-        }
+    public static void writeFile(String fileName,String content) throws IOException {
+
+        FileWriter fw = new FileWriter(fileName);
+        fw.write(content);
+        fw.close();
+
     }
-    public static void writeFile(String fileName){
-        try {
-            FileWriter fw = new FileWriter(fileName);
-            fw.write("Mike Mike@163.com");
-            fw.write("John John@163.com");
-            fw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+    public static JSONArray readFile(String fileName) throws IOException {
+        StringBuffer stringBuffer =new StringBuffer();
+        FileReader fr = new FileReader(fileName);
+        int ch = 0;
+        while ((ch = fr.read()) != -1) {
+            stringBuffer.append((char) ch);
         }
+        fr.close();
+        return JSONArray.fromObject(stringBuffer.toString());
+    }
+
+    public static JSONObject objToJson(Object obj){
+        return JSONObject.fromObject(obj);
+    }
+
+    public static Object jsonToObj(JSONObject obj,Class T){
+        return JSONObject.toBean(obj,T);
+    }
+
+    public static JSONArray listToJSONArray(List list){
+        return JSONArray.fromObject(list);
+    }
+    public static List jsonArrayToList(JSONArray jsonArray,Class objClass){
+        return (List) JSONArray.toList(jsonArray,objClass);
     }
 }
