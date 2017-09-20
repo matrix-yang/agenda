@@ -8,6 +8,7 @@ public class User {
     private String passWord;
     private String eMail;
     private String phone;
+    private boolean isLogin;
 
     public String getUserName() {
         return userName;
@@ -39,5 +40,12 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
     }
 }

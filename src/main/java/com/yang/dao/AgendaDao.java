@@ -16,6 +16,10 @@ public class AgendaDao {
     private AgendaDao() {
     }
 
+    public void init(List<Agenda> agendas) {
+        this.agendas = agendas;
+    }
+
     public static AgendaDao getInstance() {
         return agendaDao;
     }
