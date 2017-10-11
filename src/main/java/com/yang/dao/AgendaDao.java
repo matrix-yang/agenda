@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Administrator on 2017/9/19.
  */
 public class AgendaDao {
-    private List<Agenda> agendas = new ArrayList<Agenda>();
+    private List<Agenda> agendas;
     private static final AgendaDao agendaDao = new AgendaDao();
 
     private AgendaDao() {
@@ -26,7 +26,7 @@ public class AgendaDao {
 
     public Agenda findByTitle(String title) {
         for (Agenda agenda : agendas) {
-            if (agenda.getTille().equals(title)) return agenda;
+            if (agenda.getTitle().equals(title)) return agenda;
         }
         return null;
     }
@@ -38,7 +38,7 @@ public class AgendaDao {
 
     public boolean deleteAgenda(String title) {
         for (Agenda agenda : agendas) {
-            if (agenda.getTille().equals(title)) {
+            if (agenda.getTitle().equals(title)) {
                 agendas.remove(agenda);
                 return true;
             }

@@ -1,20 +1,15 @@
 package com.yang.util;
 
 import net.sf.json.*;
-import netscape.javascript.JSObject;
-
-import javax.xml.soap.SOAPElementFactory;
 import java.io.*;
 import java.util.List;
 
 public class Util {
 
     public static void writeFile(String fileName,String content) throws IOException {
-
         FileWriter fw = new FileWriter(fileName);
         fw.write(content);
         fw.close();
-
     }
 
     public static JSONArray readFile(String fileName) throws IOException {
