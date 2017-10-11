@@ -23,6 +23,10 @@ public class UserDao {
         this.users = users;
     }
 
+    public List<User> getList() {
+        return users;
+    }
+
     public User findByName(String name) {
         for (User user : users) {
             if (user.getUserName().equals(name)) return user;
@@ -45,7 +49,7 @@ public class UserDao {
         return false;
     }
 
-    public List<User> findAll(){
+    public List<User> findAll() {
         return users;
     }
 }

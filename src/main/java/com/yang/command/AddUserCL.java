@@ -16,21 +16,7 @@ public class AddUserCL extends AbstractCommand {
     String c;
 
     public boolean isMe(String[] args) {
-        this.buildOpts();
-        parser = new BasicParser();
-        CommandLine cl;
-        try {
-            cl = parser.parse(opts, args);
-            if (cl.getOptions().length > 0) {
-                if (cl.hasOption("addUser")) {
-                   return true;
-                }
-            } else {
-                System.err.println("ERROR_NOARGS");
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        if (args[0].equals("addUser")) return true;
         return false;
     }
 
