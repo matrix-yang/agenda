@@ -1,6 +1,5 @@
 package com.yang.dao;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.yang.model.Agenda;
 
 import java.util.ArrayList;
@@ -45,4 +44,15 @@ public class AgendaDao {
         }
         return false;
     }
+
+    public boolean deleteParticipator(Agenda agenda,String userName) {
+        for (String participator : agenda.getParticipator()) {
+            if (participator.equals(userName)) {
+                agenda.getParticipator().remove(participator);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
