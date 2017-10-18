@@ -1,14 +1,15 @@
 package com.yang.command;
 
 public abstract class AbstractCommand implements Command{
-    public abstract boolean isMe(String[] args);
+    public String[] args;
+    public abstract boolean isMe();
     public abstract void buildOpts();
-    public abstract void parser(String[] args);
+    public abstract void parser();
     public abstract void doCommand();
-    public abstract void setUp();
-    public void excute(String[] args){
+    public abstract void setUp(String[] args);
+    public void excute(){
         buildOpts();
-        parser(args);
+        parser();
         doCommand();
     }
 }

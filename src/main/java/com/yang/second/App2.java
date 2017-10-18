@@ -2,6 +2,7 @@ package com.yang.second;
 
 import com.yang.command.AbstractCommand;
 import com.yang.command.AddUserCL;
+import com.yang.command.Commands;
 import com.yang.dao.UserDao;
 import com.yang.model.User;
 import com.yang.util.Util;
@@ -9,6 +10,7 @@ import net.sf.json.JSONArray;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,17 +21,12 @@ import java.util.List;
  */
 public class App2
 {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, ClassNotFoundException, InstantiationException, IllegalAccessException, URISyntaxException {
         init();
 
-        AbstractCommand abstractCommand=null;
-        List<AbstractCommand> list=new ArrayList<AbstractCommand>();
-        list.add(new AddUserCL());
-
-        for (AbstractCommand command:list){
-            if (command.isMe(args)) abstractCommand=command;
-        }
-        abstractCommand.excute(args);
+        Commands commands =new Commands();
+        commands.initCMD(args);
+        commands.excute();
 
         try {
             close();
