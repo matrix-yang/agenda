@@ -4,17 +4,17 @@ package com.yang.model;
 import java.util.List;
 
 public class Agenda {
-    private String tille;
+    private String title;
     private String startTime;
     private String endTime;
-    private List<String> participator;
+    private List<User> participator;
 
-    public String getTille() {
-        return tille;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTille(String tille) {
-        this.tille = tille;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getStartTime() {
@@ -33,11 +33,11 @@ public class Agenda {
         this.endTime = endTime;
     }
 
-    public List<String> getParticipator() {
+    public List<User> getParticipator() {
         return participator;
     }
 
-    public void setParticipator(List<String> participator) {
+    public void setParticipator(List<User> participator) {
         this.participator = participator;
     }
 }
