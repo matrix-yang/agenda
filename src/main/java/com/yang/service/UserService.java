@@ -58,19 +58,4 @@ public class UserService {
             }
         }
     }
-
-    public void quitMeeting(String title,String userName) {
-        User user = userDao.findByName(userName);
-        Agenda agenda = agendaDao.findByTitle(title);
-        if (user.isParticipator()) {
-            user.setParticipator(false);
-            userDao.addUser(user);
-            agendaDao.deleteParticipator(agenda,userName);
-            agendaDao.addAgenda(agenda);
-            if("0".equals(agenda.getParticipator().size()))
-            {
-                agendaDao.deleteAgenda(title);
-            }
-        }
-    }
 }

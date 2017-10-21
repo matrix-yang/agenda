@@ -62,6 +62,7 @@ public class User {
         return isParticipator;
     }
 
+
     public void setParticipator(boolean participator) {
         isParticipator = participator;
     }

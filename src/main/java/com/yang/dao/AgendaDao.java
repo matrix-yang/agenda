@@ -1,8 +1,7 @@
 package com.yang.dao;
 
 import com.yang.model.Agenda;
-
-import java.util.ArrayList;
+import com.yang.model.User;
 import java.util.List;
 
 /**
@@ -46,7 +45,7 @@ public class AgendaDao {
     }
 
     public boolean deleteParticipator(Agenda agenda,String userName) {
-        for (String participator : agenda.getParticipator()) {
+        for ( User participator : agenda.getParticipator()) {
             if (participator.equals(userName)) {
                 agenda.getParticipator().remove(participator);
                 return true;
