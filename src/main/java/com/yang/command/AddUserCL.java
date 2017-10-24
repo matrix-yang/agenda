@@ -1,9 +1,10 @@
 package com.yang.command;
 
-import com.yang.model.User;
+import com.yang.annotation.AutoCreate;
 import com.yang.service.UserService;
 import org.apache.commons.cli.*;
 
+@AutoCreate
 public class AddUserCL extends AbstractCommand {
     UserService userService=new UserService();
     CommandLineParser parser;
@@ -15,7 +16,7 @@ public class AddUserCL extends AbstractCommand {
     String e;
     String c;
 
-    public boolean isMe(String[] args) {
+    public boolean isMe() {
         if (args[0].equals("addUser")) return true;
         return false;
     }
@@ -30,7 +31,7 @@ public class AddUserCL extends AbstractCommand {
         opts.addOption("c", true, "电话");
     }
 
-    public void parser(String[] args) {
+    public void parser() {
         parser = new BasicParser();
         CommandLine cl;
         try {
@@ -57,7 +58,7 @@ public class AddUserCL extends AbstractCommand {
         userService.addUser(n,p,e,c);
     }
 
-    public void setUp() {
-
+    public void setUp(String[] args) {
+        super.args=args;
     }
 }
