@@ -1,8 +1,7 @@
-package com.xan.command;
+package com.yang.command;
 
-import com.xan.service.UserService;
 import com.yang.annotation.AutoCreate;
-import com.yang.command.AbstractCommand;
+import com.yang.service.UserService;
 import org.apache.commons.cli.*;
 
 @AutoCreate
