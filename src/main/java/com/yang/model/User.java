@@ -48,4 +48,8 @@ public class User {
     public void setLogin(boolean login) {
         isLogin = login;
     }
+
+
 }
+
+

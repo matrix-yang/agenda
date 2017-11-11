@@ -1,7 +1,9 @@
 package com.yang.service;
 
 import com.yang.dao.UserDao;
+import com.yang.dao.AgendaDao;
 import com.yang.model.User;
+import com.yang.model.Agenda;
 
 import java.util.List;
 
@@ -10,6 +12,7 @@ import java.util.List;
  */
 public class UserService {
     private UserDao userDao = UserDao.getInstance();
+    private AgendaDao agendaDao=AgendaDao.getInstance();
 
     public boolean addUser(String userName, String passWord, String eMail, String phone) {
         if (userDao.findByName(userName) == null) {
@@ -53,4 +56,33 @@ public class UserService {
             }
         }
     }
+    public void deleteAgenda(String title,String userName){
+        //List<User> users=userDao.findAll();
+        Agenda agenda=agendaDao.findByTitle(title);
+        User currentUser=userDao.findByName(userName);
+        /*
+        for(User user:users) {
+            if (user.isLogin()) {
+                User currentUser = userDao.findByName(user.getUserName());
+            }
+        }
+        */
+        if(currentUser.equals(agenda.getCreator()))
+        {
+            agendaDao.deleteAgenda(title);
+        }
+    }
+    public void clearAgenda(String userName){
+
+        List<Agenda> agendas=agendaDao.findAll();
+        User currentUser=userDao.findByName(userName);
+
+        for(Agenda agenda:agendas){
+            if(currentUser.equals(agenda.getCreator()))
+            {
+                agendaDao.deleteAgenda(agenda.getTitle());
+            }
+        }
+    }
+
 }

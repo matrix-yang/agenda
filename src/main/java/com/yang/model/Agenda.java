@@ -8,6 +8,7 @@ public class Agenda {
     private String startTime;
     private String endTime;
     private List<User> participator;
+    private User creator;
 
     public String getTitle() {
         return title;
@@ -40,4 +41,8 @@ public class Agenda {
     public void setParticipator(List<User> participator) {
         this.participator = participator;
     }
+
+    public void setCreator(User creator){this.creator=creator;}
+
+    public User getCreator(){return creator;}
 }
