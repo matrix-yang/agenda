@@ -44,14 +44,16 @@ public class AgendaDao {
         return false;
     }
 
-    public boolean deleteParticipator(Agenda agenda,String userName) {
+    public User isParticipator(Agenda agenda,String userName) {
         for ( User participator : agenda.getParticipator()) {
-            if (participator.equals(userName)) {
-                agenda.getParticipator().remove(participator);
-                return true;
+            if (participator.getUserName().equals(userName)) {
+                return participator;
             }
         }
-        return false;
+        return null;
     }
 
+    public void deleteParticipator(Agenda agenda,User participator) {
+                agenda.getParticipator().remove(participator);
+    }
 }
