@@ -9,6 +9,8 @@ public class User {
     private String eMail;
     private String phone;
     private boolean isLogin;
+    private boolean isCreator;
+    private boolean isParticipator;
 
     public String getUserName() {
         return userName;
@@ -47,5 +49,21 @@ public class User {
 
     public void setLogin(boolean login) {
         isLogin = login;
+    }
+    public boolean isCreator() {
+        return isCreator;
+    }
+
+    public void setCreator(boolean creator) {
+        isCreator = creator;
+    }
+
+    public boolean isParticipator() {
+        return isParticipator;
+    }
+
+
+    public void setParticipator(boolean participator) {
+        isParticipator = participator;
     }
 }
